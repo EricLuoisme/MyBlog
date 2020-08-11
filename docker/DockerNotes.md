@@ -17,7 +17,7 @@
 
 ## Docker架构
 
-<img src="C:%5CUsers%5Clykis%5COneDrive%5CDesktop%5CTyporaNotes%5Cimage-20200805104350633.png" alt="image-20200805104350633" style="zoom:80%;" />
+<img src="./image/image-20200805104350633.png" alt="image-20200805104350633" style="zoom:80%;" />
 
 - 镜像（image）：相当于模板，用来创建容器服务，可以创建多个容器：image -> run -> container
 - 容器（container）：独立运行一个或一组应用，通过镜像创建，简易（无内核）的linux系统。
