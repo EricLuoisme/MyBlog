@@ -6,4 +6,4 @@ I'm a programming noob and just want to record my learning-path. This blog would
 
 [Bugs and their Solution](https://github.com/EricLuoisme/MyBlog/blob/gh-pages/ContentOfBugs)
 
-[Self-learning Notes](https://github.com/EricLuoisme/MyBlog/blob/gh-pages/ContentOfSelfLearningStuff)
+[Self-learning Notes](ContentOfSelfLearning.md)
