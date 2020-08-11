@@ -27,7 +27,7 @@
 
 ## Docker运行流程
 
-<img src="C:%5CUsers%5Clykis%5COneDrive%5CDesktop%5CTyporaNotes%5Cimage-20200804135915921.png" alt="image-20200804135915921" style="zoom: 67%;" />
+<img src="./image/image-20200804135915921.png" alt="image-20200804135915921" style="zoom: 67%;" />
 
 
 
@@ -35,7 +35,7 @@
 
 - Docker是一个Client-Server结构的系统，Docker的守护进程运行在主机上。通过Socket从客户端访问。Docker-Server接收到Docker-Client的指令，就会执行这个指令。
 
-<img src="C:%5CUsers%5Clykis%5COneDrive%5CDesktop%5CTyporaNotes%5Cimage-20200804135952561.png" alt="image-20200804135952561" style="zoom: 80%;" />
+<img src="./image/image-20200804135952561.png" alt="image-20200804135952561" style="zoom: 80%;" />
 
 
 
@@ -142,7 +142,7 @@ lyk@DESKTOP-EVIJGB4:~$ curl localhost:3344
 
 端口暴露概念：
 
-<img src="C:%5CUsers%5Clykis%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200802150924457.png" alt="image-20200802150924457" style="zoom: 67%;" />
+<img src="./image/image-20200802150924457.png" alt="image-20200802150924457" style="zoom: 67%;" />
 
 4. 进入Nginx运行容器内部
 
@@ -244,7 +244,7 @@ bootfs（boot file system），是用于引导系统加载的。主要包含boot
 
 rootfs（root file system），在bootfs之上（完成开机之后的步骤）。包含典型的Linux系统中的/dev, /bin, /etc等标准目录与文件。rootfs就是各种不同的操作系统发行版，如Centos，Ubuntu。
 
-![image-20200803133554559](C:%5CUsers%5Clykis%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200803133554559.png)
+![image-20200803133554559](./image/image-20200803133554559.png)
 
 为什么docker下，下载的镜像那么小？
 
@@ -258,15 +258,15 @@ rootfs（root file system），在bootfs之上（完成开机之后的步骤）�
 
 所有的docker镜像都起始于 **同一个基础镜像层** ，当进行修改或增加新内容的时候，就会在当前镜像层之上，创建新的镜像层。
 
-<img src="C:%5CUsers%5Clykis%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200803141426291.png" alt="image-20200803141426291" style="zoom:80%;" />
+<img src="./image/image-20200803141426291.png" alt="image-20200803141426291" style="zoom:80%;" />
 
 
 
-<img src="C:%5CUsers%5Clykis%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200803141552875.png" alt="image-20200803141552875" style="zoom:80%;" />
+<img src="./image/image-20200803141552875.png" alt="image-20200803141552875" style="zoom:80%;" />
 
-<img src="C:%5CUsers%5Clykis%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200803141631920.png" alt="image-20200803141631920" style="zoom:80%;" />
+<img src="./image/image-20200803141631920.png" alt="image-20200803141631920" style="zoom:80%;" />
 
-<img src="C:%5CUsers%5Clykis%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200803141808881.png" alt="image-20200803141808881" style="zoom:80%;" />
+<img src="./image/image-20200803141808881.png" alt="image-20200803141808881" style="zoom:80%;" />
 
 > 特点
 
@@ -274,7 +274,7 @@ Docker镜像默认都是只读的，当容器启动时，一个新的可写层�
 
 这一层就是我们说的容器层，容器之下的都叫镜像层。
 
-![image-20200803142457047](C:%5CUsers%5Clykis%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200803142457047.png)
+![image-20200803142457047](./image/image-20200803142457047.png)
 
 
 
@@ -310,7 +310,7 @@ docker：将应用与运行的环境打包成一个镜像。
 
 > 就是目录的挂载，挂载到linux上
 
- <img src="C:%5CUsers%5Clykis%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200803154248062.png" alt="image-20200803154248062" style="zoom:80%;" />
+ <img src="./image/image-20200803154248062.png" alt="image-20200803154248062" style="zoom:80%;" />
 
 总结：数据卷技术是为了实现 1）容器数据的持久化	2）同步操作	3）容器间共享数据
 
@@ -459,7 +459,7 @@ dev  home  lib64  media       opt  root  sbin  sys  usr  volume01
 
 可以实现数据在两个容器中同步
 
-<img src="C:%5CUsers%5Clykis%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200804105722247.png" alt="image-20200804105722247" style="zoom:80%;" />
+<img src=./image/image-20200804105722247.png" alt="image-20200804105722247" style="zoom:80%;" />
 
 ```shell
 # 测试
@@ -508,7 +508,7 @@ $ docker run -d -p 3301:3306 -e MYSQL_ROOT_PASSWORD=123455 --name mysql02 --volu
 
 官方dockerfile：
 
-<img src="C:%5CUsers%5Clykis%5COneDrive%5CDesktop%5CTyporaNotes%5Cimage-20200804140037125.png" alt="image-20200804140037125" style="zoom: 80%;" />
+<img src="./image/image-20200804140037125.png" alt="image-20200804140037125" style="zoom: 80%;" />
 
 
 
@@ -518,7 +518,7 @@ $ docker run -d -p 3301:3306 -e MYSQL_ROOT_PASSWORD=123455 --name mysql02 --volu
 2. 执行顺序从上往下
 3. 每一个指令都会创建提交一个新的镜像层，并提交
 
-<img src="C:%5CUsers%5Clykis%5COneDrive%5CDesktop%5CTyporaNotes%5Cimage-20200804140347585.png" alt="image-20200804140347585" style="zoom:67%;" />
+<img src="./image/image-20200804140347585.png" alt="image-20200804140347585" style="zoom:67%;" />
 
 - docker file：构建文件，定义了一切的步骤，源代码
 
@@ -531,7 +531,7 @@ $ docker run -d -p 3301:3306 -e MYSQL_ROOT_PASSWORD=123455 --name mysql02 --volu
 
 <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3722396843,3325665590&amp;fm=26&amp;gp=0.jpg" alt="img" style="zoom: 80%;" />
 
-<img src="C:%5CUsers%5Clykis%5COneDrive%5CDesktop%5CTyporaNotes%5Cimage-20200804143500642.png" alt="image-20200804143500642" style="zoom: 67%;" />
+<img src="./image/image-20200804143500642.png" alt="image-20200804143500642" style="zoom: 67%;" />
 
 ```shell
 FROM			# 基础镜像
@@ -731,13 +731,13 @@ $ docker exec -it my-tomcat-container ip addr
 1. 我们每启动一个docker容器，docker就会给docker容器分配一个ip，只要安装docker就会有一个网卡docker0桥接模式，使用的技术是veth-pair技术。
 2. veth-pair就是虚拟接口技术，都是成对出现的，所以使用evth-pair可以连接虚拟网络设备。
 
-<img src="C:%5CUsers%5Clykis%5COneDrive%5CDesktop%5CTyporaNotes%5Cimage-20200804195946057.png" alt="image-20200804195946057" style="zoom: 67%;" />
+<img src="./image/image-20200804195946057.png" alt="image-20200804195946057" style="zoom: 67%;" />
 
 **实际上，容器之间的通信，是通过Docker0，来进行”转发“的，因为相当于内网，转发速率很高**
 
 在容器不指定网络的情况下，都是docker0路由这些消息的，docker会给容器分配一个默认的可用的ip。
 
-<img src="C:%5CUsers%5Clykis%5COneDrive%5CDesktop%5CTyporaNotes%5Cimage-20200804200455856.png" alt="image-20200804200455856" style="zoom: 80%;" />
+<img src="./image/image-20200804200455856.png" alt="image-20200804200455856" style="zoom: 80%;" />
 
 
 
@@ -791,7 +791,7 @@ NETWORK ID          NAME                DRIVER              SCOPE
 1e359a275fba        none
 ```
 
-<img src="C:%5CUsers%5Clykis%5COneDrive%5CDesktop%5CTyporaNotes%5Cimage-20200804204837150.png" alt="image-20200804204837150" style="zoom: 67%;" />
+<img src="./image/image-20200804204837150.png" alt="image-20200804204837150" style="zoom: 67%;" />
 
 
 
@@ -866,13 +866,13 @@ $ docker network connect mynet tomcat01
 # 就是官方所说的，一个容器，两个ip
 ```
 
-<img src="C:%5CUsers%5Clykis%5COneDrive%5CDesktop%5CTyporaNotes%5Cimage-20200804210520907.png" alt="image-20200804210520907" style="zoom:67%;" />
+<img src="./image/image-20200804210520907.png" alt="image-20200804210520907" style="zoom:67%;" />
 
 
 
 ## 实战：部署Redis集群
 
-<img src="C:%5CUsers%5Clykis%5COneDrive%5CDesktop%5CTyporaNotes%5Cimage-20200804211005125.png" alt="image-20200804211005125" style="zoom:67%;" />
+<img src="./image/image-20200804211005125.png" alt="image-20200804211005125" style="zoom:67%;" />
 
 ```shell
 # 创建网络
