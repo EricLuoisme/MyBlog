@@ -1,1 +1,1 @@
-- [Docker Basics](EricLuoisme/Myblog/master/docker/DockerNotes.md)
+- [Docker Basics](/docker/DockerNotes.md)
