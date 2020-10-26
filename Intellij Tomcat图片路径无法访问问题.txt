@@ -1,0 +1,5 @@
+解决方法：
+1. 进入Intellj中Tomcat的configuration，勾选Deploy application configured in Tomcat instance，
+	这样在conf中的server.xml就能起效
+2. 不勾选第一种，但是在Deployment里面添加一个文件夹(你存放图片等东西的位置)，
+	然后修改他的路径，这样运行时就会暴露这个文件路径下的所有文件（推荐使用，可以更快启动）
