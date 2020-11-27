@@ -149,17 +149,88 @@ JWE一共5个部分，分别是：
 - The encrypted data（cipher text），密文数据
 - The authentication tag，算法产生的附加数据，防止密文被篡改
 
+### JWE密钥加密算法
 
+一般来说，JWE需要对密钥进行加密，这意味着一个JWE中至少有两种加密算法在起作用。但并非将密钥拿来就能用，我们需要对密钥进行加密后，利用JWK密钥管理模式来到导出这些密钥。JWE有5种管理模式：
 
+1. Key Encryption
+2. Key Wrapping
+3. Direct Key Agreement
+4. Key Agreement with Key Wrapping
+5. Direct Encryption
 
+### JWE Header
 
+> type：一般是 jwt
+>
+> alg：算法名称，和JWS相同，该算法用于加密稍后用于加密内容的实际密钥
+>
+> enc：算法名称，用上一步生成的密钥加密内容的算法。
+>
+> zip：加密前压缩数据的算法。该参数可选，如果不存在则不执行压缩，通常的值为 DEF，也就是[deflate算法](https://tools.ietf.org/html/rfc1951)
+>
+> jku/jkw/kid/x5u/x5c/x5t/x5t#S256/typ/cty/crit：和JWS额额外声明一样。
 
+### JWE的加密过程
 
+1. 首先根据头部alg的声明，生成一定大小的随机数
+2. 根据密钥管理模式，确定加密密钥
+3. 根据密钥管理模式确定JWE加密密钥，得到CEK
+4. 计算初始IV（若不需要则跳过该步骤）
+5. 如果ZIP在头部声明了，则压缩明文
+6. 使用CEK，IV和附加认证数据，通过enc头声明的算法来加密内容，结果为加密数据和认证标记
+7. 压缩内容，返回token
 
+> ```
+> base64(header) + '.' +
+> 
+> base64(encryptedKey) + '.' + // Steps 2 and 3
+> 
+> base64(initializationVector) + '.' + // Step 4
+> 
+> base64(ciphertext) + '.' + // Step 6
+> 
+> base64(authenticationTag) // Step 6
+> ```
 
+### 多重验证与JWE序列化
 
+> ```json
+> {
+>     "protected": "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2In0",
+>     "unprotected": { "jku":"https://server.example.com/keys.jwks" },
+>     "recipients":[
+>         {
+>         "header": { "alg":"RSA1_5","kid":"2011-04-29" },
+>         "encrypted_key":
+>         "UGhIOguC7Iu...cqXMR4gp_A"
+>         },
+>         {
+>         "header": { "alg":"A128KW","kid":"7" },
+>         "encrypted_key": "6KB707dM9YTIgH...9locizkDTHzBC2IlrT1oOQ"
+>         }
+>     ],
+>     "iv": "AxY8DCtDaGlsbGljb3RoZQ",
+>     "ciphertext": "KDlTtXchhZTGufMYmOYGS4HffxPSUrfmqCHXaI9wOGY",
+>     "tag": "Mz-VPPyU4RlcuYv1IwIvzw"
+> }
+> ```
 
+结构可以理解为：
 
-
-
+> protected：之前的头部声明，利用b64uri加密；
+>
+> unprotected：一般放JWS的额外声明，这段内容不会被b64加密；
+>
+> iv：64加密后的iv参数；
+>
+> add：额外认证数据；
+>
+> ciphertext：b64加密后的加密数据；
+>
+> recipients：b64加密后的认证标志-加密链，这是一个数组，每个数组中包含了两个信息；
+>
+> header：主要是声明当前密钥的算法；
+>
+> encrypted_key：JWE加密密钥。
 
