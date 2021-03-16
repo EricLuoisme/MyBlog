@@ -50,10 +50,3 @@ contract MyContract {
 通过设置public后的关键字，可以限制只允许特定人群才能调用该function
 
 
-
-## 延迟Sell
-
-```js
-
-```
-
